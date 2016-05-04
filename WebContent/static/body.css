@@ -307,7 +307,7 @@ a:hover {
 	float: left;
 	width: 100px;
 	height: 80px;
-	background: url(images/logo_school.png);
+	background: url(/static/images/logo_school.png);
 	background-repeat: no-repeat;
 	background-position-y: center;
 }

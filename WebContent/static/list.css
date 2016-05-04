@@ -5,12 +5,12 @@
 	/* position: relative; */
 	/* background-color: #eaeaea; */
 	padding-top: 2px;
-	font-size:1.2em;
+	font-size: 15px;
 }
 #main #leftMenu{
 	/* position: absolute; */
 	width: 190px;
-	height: 466px;
+	height: 600px;
 	border-right: 2px solid #ccc;
 	background-color: white;
 	border: 1px #cecece solid;
@@ -57,7 +57,7 @@ text-decoration: underline;
 #main #rightList{
 	/* position: absolute; */
 	width: 950px;
-	height: 466px;
+	height: 600px;
 	right: 0;
 	background-color: white;
 	float: left;
@@ -99,7 +99,8 @@ text-decoration: underline;
 	color: #555;
 	position: relative;
 	padding-left: 40px;
-
+	bottom: -140px;
+	font-size: 13px;
 }
 #main .wrap {
 	width: 1150px;
