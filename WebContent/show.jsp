@@ -24,7 +24,7 @@
 					&gt; ${news.title}
 				</div>
 				<div id="listBox">
-					<h1 id="title">${news.title}</h1>
+					<h3 id="title">${news.title}</h3>
 					<div id="info">作者：${news.author} 发布时间：${news.createTime}</div>
 					<div id="content">${news.content}</div>
 				</div>
