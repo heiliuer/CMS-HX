@@ -1,0 +1,108 @@
+#main{
+	width: 100%;
+	height: 470px;
+	margin: 0 auto;
+	/* position: relative; */
+	/* background-color: #eaeaea; */
+	padding-top: 2px;
+	font-size:1.2em;
+}
+#main #leftMenu{
+	/* position: absolute; */
+	width: 190px;
+	height: 466px;
+	border-right: 2px solid #ccc;
+	background-color: white;
+	border: 1px #cecece solid;
+	float: left;
+}
+#main #leftMenu .menuTitle{
+	
+height: 45px;
+background: url(img/sort.gif)  no-repeat;
+}
+#main #leftMenu .searchTitle{
+	
+height: 45px;
+background: url(img/search.gif)  no-repeat;
+}
+#main #leftMenu .searchBox{
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.2em;
+}
+#main #leftMenu .menuList{
+	width: 190px;
+	margin: 0 auto;
+}
+#main #leftMenu .menuList li{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-bottom: 1px dotted #ccc;
+	margin:0 10px;
+}
+#main #leftMenu .menuList li a{
+color: #666;
+text-decoration: none;
+}
+#main #leftMenu .menuList li a:visited{
+color: #666;
+text-decoration: none;
+}
+#main #leftMenu .menuList li a:hover{
+color: red;
+text-decoration: underline;
+}
+#main #rightList{
+	/* position: absolute; */
+	width: 950px;
+	height: 466px;
+	right: 0;
+	background-color: white;
+	float: left;
+}
+#main #rightList #path{
+	height: 40px;
+	background-color: #097AE4;
+	line-height: 40px;
+	padding-left: 20px;
+	color: white;
+}
+#main #rightList #path a{
+	color: white;
+	text-decoration: none;
+}
+#main #rightList #listBox{
+	width: 660px;
+	height: 350px;
+	padding-left:50px;
+	padding-top:30px;
+}
+#main #rightList #listBox li{
+	height: 30px;
+	line-height: 30px;
+	list-style-type: circle;
+	position: relative;
+}
+#main #rightList #listBox li a{
+	color:#333;
+	text-decoration: none;
+}
+#main #rightList #listBox li .datetime{
+	position: absolute;
+	color:#666;
+	right: 0;
+	
+}
+#main #rightList #pagecode{
+	color: #555;
+	position: relative;
+	padding-left: 40px;
+
+}
+#main .wrap {
+	width: 1150px;
+	margin: 0 auto;
+	/* display: inline; */
+}

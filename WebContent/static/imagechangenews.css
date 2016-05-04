@@ -1,0 +1,36 @@
+.imagechangenews_pnode {
+	padding: 1px 7px;
+	border-left-color: rgb(123, 123, 123);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+a.imagechangenews_pnode:link {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(102, 102, 102);
+}
+a.imagechangenews_pnode:visited {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(102, 102, 102);
+}
+a.imagechangenews_pnode:active {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(153, 153, 153);
+}
+a.imagechangenews_pnode:hover {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(153, 153, 153);
+}
+.imagechangenews_fnode {
+	padding: 1px 7px;
+	border-left-color: rgb(123, 123, 123);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+a.imagechangenews_fnode:link {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(255, 0, 0);
+}
+a.imagechangenews_fnode:visited {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(255, 0, 0);
+}
+a.imagechangenews_fnode:active {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(255, 0, 0);
+}
+a.imagechangenews_fnode:hover {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: ����; font-size: 15px; text-decoration: none; background-color: rgb(255, 0, 0);
+}

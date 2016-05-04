@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+body{margin:0px;padding:0px;border:0px;font-family:"微软雅黑"; font-size:14px;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;min-width:1150px;background-color:#f4f2ee;}
+ul,li{list-style:none; margin:0px; padding:0px;}
+table,tr,td,h2,span,p,form,input,dl,dd,dt{margin:0px; padding:0px;}
+img{margin:0px;padding:0px; border:0px;}
+a{text-decoration:none; cursor:pointer;}
+a:hover{ text-decoration:none;}
+.auto{margin:0px auto;}
+.fl{float:left; display:inline;}
+.fr{float:right;display:inline;}
+.clear{ clear:both;}
+.auto{margin:0px auto;}
+.width{ width:1150px;}
+
+.xinwen-list2{width:400px; height:350px;overflow:hidden;}
+.xinwen-list2 .tzlb{height:34px; line-height:34px; width:315px; border-bottom:1px solid #dddbd9; background:url(../images/icon-qd.gif) no-repeat 0 16px; position:relative; padding-left:15px; font-size:14px; padding-right:70px; overflow:hidden;}
+.xinwen-list2 .lbwzk{height:34px; line-height:34px; width:315px; position:absolute; left:15px; top:0;}
+.xinwen-list2 .lbwzk a{color:#282525; text-decoration:none;}
+.xinwen-list2 .lbwzk a:hover{color:#bd0100;}
+.xinwen-list2 .lb{}
+.xinwen-list2 .lbsjk{position:absolute; right:0; width:66px; text-align:right; color:#a6a6a6; font-size:12px;}
