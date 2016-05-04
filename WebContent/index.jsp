@@ -88,7 +88,7 @@
 						</DT>
 						<DD>
 							<div class="dd-bt">
-								<A href="http://news.xidian.edu.cn/" target="_blank">西电新增奖励</A>
+								<A href="http://news.xidian.edu.cn/" target="_blank">长大新增奖励</A>
 							</div>
 							<div class="dd-zy">4月22日，教育部公布了2015年度“长江学者奖励计划”入选名单，长江大学共有5人入选。其中，通信工程学院李云松教授和电...</div>
 							<div class="dd-zyxia">
@@ -109,7 +109,7 @@
 						</DT>
 						<DD>
 							<div class="dd-bt">
-								<A href="http://www.xidian.edu.cn/jyjx/xdyc.htm" target="_blank">西电英才</A>
+								<A href="http://www.xidian.edu.cn/jyjx/xdyc.htm" target="_blank">长大英才</A>
 							</div>
 							<div class="dd-zy">学校着力营造凝心聚力的办学环境，不拘一格育引汇聚一流英才，锻造了一支师德高尚、业务精湛、结构合理、充满活力的高水平师资队伍。</div>
 							<div class="dd-zyxia">
@@ -130,9 +130,9 @@
 						</DT>
 						<DD>
 							<div class="dd-bt">
-								<A href="http://dag.xidian.edu.cn/" target="_blank">西电往事</A>
+								<A href="http://dag.xidian.edu.cn/" target="_blank">长大往事</A>
 							</div>
-							<div class="dd-zy">在这里，你可以品味那部永不消逝的电波史：你可以分享那些可歌可泣的红色传奇；你可以重温那段激情燃烧的光辉岁月！从这里走进西电的...</div>
+							<div class="dd-zy">在这里，你可以品味那部永不消逝的电波史：你可以分享那些可歌可泣的红色传奇；你可以重温那段激情燃烧的光辉岁月！从这里走进长大的...</div>
 							<div class="dd-zyxia">
 								<font class="liulan fr"><A
 									href="http://dag.xidian.edu.cn/" target="_blank">...</A></font>
