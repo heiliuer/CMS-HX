@@ -111,7 +111,24 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			dbconn.freeConn(conn, ps, null);
+		}
+		return false;
+	}
+
+	public boolean checkUser(String name, String pass) {
+		conn = dbconn.getConn();
+		String sql = "select * from user where name = ? and pass = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, pass);
+			if (ps.executeQuery().first()) {
+				return true;
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);

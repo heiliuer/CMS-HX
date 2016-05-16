@@ -225,16 +225,13 @@ public class NewsDao {
 			rs = s.executeQuery(sql);
 			News news = new News();
 			if (rs.next()) {
-
 				news.setId(rs.getInt("id"));
 				news.setAuthor(rs.getString("author"));
 				news.setContent(rs.getString("content"));
 				news.setCreateTime(rs.getString("createTime"));
 				news.setNewsType(rs.getInt("newsType"));
 				news.setNewsClassId(rs.getInt("newsClassId"));
-
 				news.setTitle(rs.getString("title"));
-
 			}
 			return news;
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class ServletBase extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
 
 	protected void toPage(String jsp, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -9,7 +9,7 @@
 		</div>
 		<div class="bottom_3">
 			<div class="bottom_2_1">地址：湖北省荆州市南环路1号长江大学电子信息学院</div>
-			<div class="bottom_2_1">邮编：434023 电话：0716-8060634,8060179</div>
+			<div class="bottom_2_1" onclick="location.href='/NewsServlet?action=selectAll'">邮编：434023 电话：0716-8060634,8060179</div>
 		</div>
 	</div>
 </div>

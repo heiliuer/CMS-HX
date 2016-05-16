@@ -17,33 +17,16 @@ import com.hx.utils.StringUtils;
 
 public class NewsServlet extends ServletBase {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String action = request.getParameter("action");
-		
-		if(StringUtils.isEmpty(action)){
-			action="selectNewsIndex";
+
+		if (StringUtils.isEmpty(action)) {
+			action = "selectNewsIndex";
 		}
-		
+
 		NewsDao newsdao = new NewsDao();
 		if ("selectAll".equals(action)) {
 			log("selectAll");
@@ -137,10 +120,10 @@ public class NewsServlet extends ServletBase {
 		// 新闻列表页面
 		else if ("selectNewsListSearch".equals(action)) {
 			log("selectNewsListSearch");
-			String newsClassIdStr=request.getParameter("newsClassId");
-			if(StringUtils.isEmpty(newsClassIdStr)){
-				 toErrotPage("缺少参数", request, response);
-				 return;
+			String newsClassIdStr = request.getParameter("newsClassId");
+			if (StringUtils.isEmpty(newsClassIdStr)) {
+				toErrotPage("缺少参数", request, response);
+				return;
 			}
 			int newsClassId = Integer.parseInt(newsClassIdStr);
 
@@ -272,25 +255,9 @@ public class NewsServlet extends ServletBase {
 			news = newsdao.getNewsById(newsid);
 			request.setAttribute("news", news);
 			request.getRequestDispatcher("admin/newsMod.jsp").forward(request, response);
-
 		}
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to
-	 * post.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

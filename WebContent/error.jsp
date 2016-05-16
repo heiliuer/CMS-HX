@@ -10,6 +10,7 @@
 <title>操作失败</title>
 </head>
 <body>
-	<%=request.getAttribute("error_msg") %>
+	<h5 align="center"><%=request.getAttribute("error_msg") %></h5>
+	<h6 align="center"> <a href="/">回到首页</a></h6>
 </body>
 </html>
