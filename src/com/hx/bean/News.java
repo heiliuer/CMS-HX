@@ -6,6 +6,8 @@ public class News {
 	private String title;
 	private String content;
 	private String author;
+	private String imgs;
+	private String files;
 	private int newsType;
 
 	private String createTime;
@@ -65,8 +67,5 @@ public class News {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-	
-	
-	
 
 }

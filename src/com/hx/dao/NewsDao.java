@@ -24,7 +24,6 @@ public class NewsDao {
 			s = conn.createStatement();
 			rs = s.executeQuery(sql);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -32,7 +31,6 @@ public class NewsDao {
 			ps = conn.prepareStatement(sql);
 			News news = null;
 			while (rs.next()) {
-
 				news = new News();
 				news.setId(rs.getInt("id"));
 				news.setAuthor(rs.getString("author"));
@@ -41,13 +39,10 @@ public class NewsDao {
 				news.setNewsType(rs.getInt("newsType"));
 				news.setNewsClassId(rs.getInt("newsClassId"));
 				news.setTitle(rs.getString("title"));
-
 				al.add(news);
-
 			}
 			return al;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -66,7 +61,7 @@ public class NewsDao {
 			s = conn.createStatement();
 			rs = s.executeQuery(sql);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -89,7 +84,7 @@ public class NewsDao {
 			}
 			return al;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -110,7 +105,7 @@ public class NewsDao {
 			s = conn.createStatement();
 			rs = s.executeQuery(sql);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -133,7 +128,7 @@ public class NewsDao {
 			}
 			return al;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -159,7 +154,7 @@ public class NewsDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -187,7 +182,7 @@ public class NewsDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -209,7 +204,7 @@ public class NewsDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -236,7 +231,7 @@ public class NewsDao {
 			return news;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return null;

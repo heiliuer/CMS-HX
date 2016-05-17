@@ -22,7 +22,7 @@ public class SortDao {
 			sort.setSortName(rs.getString("sortName"));
 			sort.setSortLevel(rs.getInt("sortLevel"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -42,7 +42,7 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -65,7 +65,7 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -88,7 +88,7 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -110,7 +110,7 @@ public class SortDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -132,7 +132,7 @@ public class SortDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -150,7 +150,7 @@ public class SortDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);

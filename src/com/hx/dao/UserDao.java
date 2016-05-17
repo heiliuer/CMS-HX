@@ -25,7 +25,7 @@ public class UserDao {
 			user.setPrivileges(rs.getInt("privileges"));
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -46,7 +46,7 @@ public class UserDao {
 			}
 			return listUser;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -69,7 +69,7 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -93,7 +93,7 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);

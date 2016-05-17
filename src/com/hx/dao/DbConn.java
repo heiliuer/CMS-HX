@@ -37,24 +37,8 @@ public class DbConn {
 				s.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	/*
-	 * public void test() { Connection conn = getConn(); String sql =
-	 * "select id, content, createTime, title from news"; try { Statement s =
-	 * conn.createStatement(); ResultSet rs = s.executeQuery(sql); while
-	 * (rs.next()) { System.out.print(rs.getInt("id") + "\t");
-	 * System.out.print(rs.getString("content") + "\t");
-	 * System.out.print(rs.getString("createTime") + "\t");
-	 * System.out.println(rs.getString("title")); } } catch (SQLException e) {
-	 * // TODO Auto-generated catch block e.printStackTrace(); } }
-	 */
-
-	public static void main(String[] args) {
-		// DbConn dd = new DbConn();
-		// dd.test();
-	}
 }
