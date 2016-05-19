@@ -53,7 +53,8 @@
 							</c:forEach>
 						</div>
 					</div>
-					<div style="background: linear-gradient(to right, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.04)); margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; left: 0px; top: -40px; width: 850px; height: 50px; text-align: left; overflow: hidden; position: relative;">
+					<div
+						style="background: linear-gradient(to right, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.04)); margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; left: 0px; top: -40px; width: 850px; height: 50px; text-align: left; overflow: hidden; position: relative;">
 						<div align="left"
 							style='background: url("images/banner-icon.png"); padding: 0px 30px; width: 640px; height: 40px; line-height: 40px; overflow: hidden;'>
 							<A class="titlestyle65492" id="u_u35_newstitle" target="_blank"></A>
@@ -106,7 +107,9 @@
 								</DT>
 								<DD>
 									<div class="dd-bt">
-										<A href="http://news.xidian.edu.cn/" target="_blank">${news.title }</A>
+										<A
+											href="/NewsServlet?action=selectNewsShow&newsClassId=${sort.id }&newsid=${news.id}"
+											target="_blank">${news.title }</A>
 									</div>
 									<div class="dd-zy">${fn:substring(news.content, 0, 40)}...</div>
 									<div class="dd-zyxia">
@@ -131,9 +134,12 @@
 			<c:set value="${sortNews.sort }" var="sort" />
 			<div class="xinwen fr" title="${sort.sortName }">
 				<div class="xw-biaoti bt-bg">
-					<A class="fl" href="http://news.xidian.edu.cn/" target="_blank">${sort.sortName }</A>
-					<font class="liulan fr"><A style="font-size: 14px;"
-						href="http://news.xidian.edu.cn/" target="_blank">更多&gt;</A></font>
+					<A class="fl"
+						href="/NewsServlet?action=selectNewsList&newsClassId=${sort.id }"
+						target="_blank">${sort.sortName }</A> <font class="liulan fr"><A
+						style="font-size: 14px;"
+						href="/NewsServlet?action=selectNewsList&newsClassId=${sort.id }"
+						target="_blank">更多&gt;</A></font>
 					<div class="clear"></div>
 				</div>
 
@@ -143,7 +149,7 @@
 						<c:forEach items="${newss }" var="news" end="2" varStatus="vst">
 							<div class="tzlb">
 								<div class="lbwzk">
-									<a class="lb"
+									<a class="lb ${news.newsType>0?'hot':'' }"
 										href="NewsServlet?action=selectNewsShow&newsClassId=${sort.id }&newsid=${news.id }">${news.title }</a>
 								</div>
 								<div class="lbsjk">${news.createTime }</div>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-05-19 23:25:14
+Date: 2016-05-20 00:17:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,17 @@ CREATE TABLE `news` (
   `createTime` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of news
 -- ----------------------------
-INSERT INTO `news` VALUES ('67', '55', '我院将举行篮球比赛', ' 我院将举行篮球比赛，地点在东门小操场', 'files\\d8468202-a630-4e78-93bb-642147b58bc4.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('68', '55', '泡沫之夏', ' 泡沫之夏，初夏的味道！', 'files\\7df711df-3767-4014-9c05-0facc7cfff67.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('67', '55', '我院将举行篮球比赛', ' 我院将举行篮球比赛，地点在东门小操场', 'files\\dfdee79b-4e9b-4fb9-b6f3-a81738869872.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('69', '68', '关于引力波的设想', ' 引力波是否可以归类到电磁波中', 'files\\b2e2ae55-6488-45d1-882c-4f6bfd62c638.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('70', '68', '智能家居系统最新进展研究', ' 结合ZigBee，蓝牙，wifi，组件快速便捷，易于安装的家庭网络', 'files\\48037607-c389-4135-80f3-cb8abf54a716.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('71', '68', 'TCP和UDP的使用场景分析', ' TCP是可靠传输，UDP非可靠。', 'files\\c671729f-4c33-4af4-8a0a-8377494f33fd.jpg', 'admin', '0', '2016-5-19');
+INSERT INTO `news` VALUES ('72', '61', '社团招新了！', ' 下周开始，社团招新活动全面开启，小伙伴们准备好了吗！', 'files/8d6c68fd-9fc9-46ea-b0c2-bfea7db0f82d.jpg', 'admin', '2', '2016-5-19');
 
 -- ----------------------------
 -- Table structure for sort

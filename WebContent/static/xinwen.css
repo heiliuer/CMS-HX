@@ -19,4 +19,5 @@ a:hover{ text-decoration:none;}
 .xinwen-list2 .lbwzk a{color:#282525; text-decoration:none;}
 .xinwen-list2 .lbwzk a:hover{color:#bd0100;}
 .xinwen-list2 .lb{}
+.xinwen-list2 .lbwzk a.hot{color: #880000; }
 .xinwen-list2 .lbsjk{position:absolute; right:0; width:66px; text-align:right; color:#a6a6a6; font-size:12px;}
