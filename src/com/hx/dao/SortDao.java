@@ -21,15 +21,16 @@ public class SortDao {
 			sort.setId(rs.getInt("id"));
 			sort.setSortName(rs.getString("sortName"));
 			sort.setSortLevel(rs.getInt("sortLevel"));
+			sort.setWeight(rs.getInt("weight"));
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
 
-	public ArrayList<Sort> getAllSort() {
+	public ArrayList<Sort> getAllSortOrderByWeightDesc() {
 		conn = dbconn.getConn();
-		String sql = "select id, sortName, sortLevel from sort order by id ";
+		String sql = "select * from sort order by weight desc ";
 		try {
 			s = conn.createStatement();
 			rs = s.executeQuery(sql);
@@ -42,7 +43,51 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public ArrayList<Sort> getAllSort() {
+		conn = dbconn.getConn();
+		String sql = "select * from sort order by id ";
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sql);
+			ArrayList<Sort> listSort = new ArrayList<Sort>();
+
+			while (rs.next()) {
+				Sort sort = new Sort();
+				setSort(sort);
+				listSort.add(sort);
+			}
+			return listSort;
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public ArrayList<Sort> getAllTopSort() {
+		conn = dbconn.getConn();
+		String sql = "select * from sort where sortLevel=0";
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sql);
+			ArrayList<Sort> listSort = new ArrayList<Sort>();
+
+			while (rs.next()) {
+				Sort sort = new Sort();
+				setSort(sort);
+				listSort.add(sort);
+			}
+			return listSort;
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
 
@@ -51,7 +96,6 @@ public class SortDao {
 
 	public ArrayList<Sort> getSortById(int newsClassId) {
 		conn = dbconn.getConn();
-		// String sql = "select id, sortName, sortLevel from sort order by id ";
 		String sql = "select * from sort where id=" + newsClassId;
 		try {
 			s = conn.createStatement();
@@ -65,7 +109,7 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -88,7 +132,7 @@ public class SortDao {
 			}
 			return listSort;
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -98,19 +142,20 @@ public class SortDao {
 	public boolean insertSort(Sort sort) {
 		conn = dbconn.getConn();
 
-		String sql = "insert into sort ( id ,sortName, sortLevel) values (?, ?, ?)";
+		String sql = "insert into sort ( id ,sortName, sortLevel,weight) values (?, ?, ?,?)";
 		try {
 			ps = conn.prepareStatement(sql);
 
 			ps.setInt(1, sort.getId());
 			ps.setString(2, sort.getSortName());
 			ps.setInt(3, sort.getSortLevel());
+			ps.setInt(4, sort.getWeight());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -120,19 +165,20 @@ public class SortDao {
 
 	public boolean updateSort(Sort sort) {
 		conn = dbconn.getConn();
-		String sql = "update sort set sortName = ?, sortLevel= ? where id =? ";
+		String sql = "update sort set sortName = ?, sortLevel= ? ,weight= ? where id =? ";
 		try {
 			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, sort.getSortName());
 			ps.setInt(2, sort.getSortLevel());
-			ps.setInt(3, sort.getId());
+			ps.setInt(3, sort.getWeight());
+			ps.setInt(4, sort.getId());
 
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);
@@ -150,7 +196,7 @@ public class SortDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		} finally {
 			dbconn.freeConn(conn, ps, null);

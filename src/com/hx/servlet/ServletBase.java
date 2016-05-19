@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.hx.utils.Status;
+
 public abstract class ServletBase extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
 
 	protected void toPage(String jsp, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -18,6 +20,16 @@ public abstract class ServletBase extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		request.getRequestDispatcher(jsp).forward(request, response);
+	}
+
+	protected void toJson(HttpServletResponse response, Status status) {
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		try {
+			response.getWriter().write(new Gson().toJson(status));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void toErrotPage(String msg, HttpServletRequest request, HttpServletResponse response)

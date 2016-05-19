@@ -287,8 +287,7 @@ a:hover {
 .bottom {
 	height: 90px;
 	float: left;
-	background: #514f4f;
-	/*蓝色*/
+	background: #514f4f;/*蓝色*/
 	/*background:#0e67bc;*/
 }
 
@@ -403,7 +402,7 @@ a:hover {
 	line-height: 46px;
 	float: left;
 	list-style: none;
-	border-left: 1px solid #cdcdcd;
+	border-left: 1px solid rgba(204, 200, 200, 0.29);
 	width: 105px;
 	text-align: center;
 	margin-top: 1px;

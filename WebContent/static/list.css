@@ -1,19 +1,9 @@
 #main{
-	width: 100%;
-	height: 470px;
-	margin: 0 auto;
-	/* position: relative; */
-	/* background-color: #eaeaea; */
-	padding-top: 2px;
-	font-size: 15px;
 }
 #main #leftMenu{
-	/* position: absolute; */
 	width: 190px;
-	height: 600px;
-	border-right: 2px solid #ccc;
-	background-color: white;
-	border: 1px #cecece solid;
+	min-height: 4em;
+	/* background-color: #F1F1F1; */
 	float: left;
 }
 #main #leftMenu .menuTitle{
@@ -36,11 +26,13 @@ background: url(img/search.gif)  no-repeat;
 	margin: 0 auto;
 }
 #main #leftMenu .menuList li{
-	height: 30px;
 	line-height: 30px;
 	text-align: center;
-	border-bottom: 1px dotted #ccc;
-	margin:0 10px;
+	border-bottom: 1px dotted rgba(204, 204, 204, 0.71);
+	padding: 0.32em 0;
+}
+#main #leftMenu .menuList:first-child{
+	padding-top:2em;
 }
 #main #leftMenu .menuList li a{
 color: #666;
@@ -55,35 +47,34 @@ color: red;
 text-decoration: underline;
 }
 #main #rightList{
-	/* position: absolute; */
-	width: 950px;
-	height: 600px;
+	width: 959px;
 	right: 0;
-	background-color: white;
+	min-height: 500px;
 	float: left;
+	border-left: 1px solid #F1F1F1;
 }
 #main #rightList #path{
 	height: 40px;
-	background-color: #097AE4;
+	background-color: #F1F1F1;
 	line-height: 40px;
-	padding-left: 20px;
-	color: white;
+	padding-left: 1em;
+	color: #696464;
+	font-size: 0.6em;
 }
 #main #rightList #path a{
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 #main #rightList #listBox{
-	width: 660px;
-	height: 350px;
-	padding-left:50px;
-	padding-top:30px;
+	padding: 2em;
 }
 #main #rightList #listBox li{
 	height: 30px;
 	line-height: 30px;
 	list-style-type: circle;
 	position: relative;
+	border-bottom: 1px dotted #ccc;
+	list-style: none;
 }
 #main #rightList #listBox li a{
 	color:#333;
@@ -105,5 +96,18 @@ text-decoration: underline;
 #main .wrap {
 	width: 1150px;
 	margin: 0 auto;
-	/* display: inline; */
+	background-color: rgba(218, 218, 218, 0.13);
+}
+
+#listBox #info {
+	color: #5F5F5F;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+#listBox #title {
+	color: #292929;
+	text-align:center;
+	margin: 0;
+	padding: 0.2em;
 }

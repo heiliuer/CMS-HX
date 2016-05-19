@@ -4,17 +4,25 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.hx.bean.BaseEntity;
 import com.hx.bean.News;
 import com.hx.bean.Sort;
 import com.hx.dao.NewsDao;
 import com.hx.dao.SortDao;
+import com.hx.utils.Constants;
 import com.hx.utils.StringUtils;
 
+@WebServlet("/NewsServlet")
 public class NewsServlet extends ServletBase {
 
 	private static final long serialVersionUID = 1L;
@@ -69,18 +77,26 @@ public class NewsServlet extends ServletBase {
 		// 首页新闻显示页面
 		else if ("selectNewsIndex".equals(action)) {
 			log("selectNewsIndex");
-			int newsClassId = 19;
-			// System.out.println(newsClassId);
 			// 所有新闻的集合
-			ArrayList<News> listNews = new ArrayList<News>();
-			listNews = newsdao.getNewsBySortName(newsClassId);
-			request.setAttribute("listNews", listNews);
 
 			// 所以分类的集合
 			SortDao sortdao = new SortDao();
-			ArrayList<Sort> listSort = new ArrayList<Sort>();
-			listSort = sortdao.getAllSort();
+			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
+
+			// 权重分新闻
+			listSort = sortdao.getAllSortOrderByWeightDesc();
+			List<Map<String, Object>> sortNewsList = Lists.newArrayList();
+			for (Sort sort : listSort) {
+				ArrayList<News> listNews = newsdao.getNewsBySortName(sort.getId());
+				Map<String, Object> map = Maps.newHashMap();
+				map.put("sort", sort);
+				map.put("news", listNews);
+				sortNewsList.add(map);
+				request.setAttribute("listNews", listNews);
+			}
+
+			request.setAttribute("sortNewsList", sortNewsList);
 
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
@@ -97,8 +113,7 @@ public class NewsServlet extends ServletBase {
 
 			// 所以分类的集合
 			SortDao sortdao = new SortDao();
-			ArrayList<Sort> listSort = new ArrayList<Sort>();
-			listSort = sortdao.getAllSort();
+			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
 
 			// 所以子分类的集合
@@ -165,15 +180,14 @@ public class NewsServlet extends ServletBase {
 			// System.out.println(newsClassId);
 			// 获取指定id的新闻
 			/// ArrayList<News> listNews = new ArrayList<News>();
-			News news = null;
+			BaseEntity news = null;
 			news = newsdao.getNewsById(newsid);
 			// listNews = newsdao.getNewsBySortName(7);
 			request.setAttribute("news", news);
 
 			// 所以分类的集合
 			SortDao sortdao = new SortDao();
-			ArrayList<Sort> listSort = new ArrayList<Sort>();
-			listSort = sortdao.getAllSort();
+			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
 
 			// 所以子分类的集合
@@ -194,10 +208,10 @@ public class NewsServlet extends ServletBase {
 		} else if ("insertNews".equals(action)) {
 			log("insertNews");
 			News news = new News();
-
 			int newsClassId = Integer.parseInt(request.getParameter("newsClassId"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			String imgs = request.getParameter("imgs");
 			// String author = request.getParameter("author");
 
 			int newsType = Integer.parseInt(request.getParameter("newsType"));
@@ -209,18 +223,17 @@ public class NewsServlet extends ServletBase {
 			news.setContent(content);
 			news.setNewsType(newsType);
 			news.setCreateTime(nowtimes);
+			news.setImgs(imgs);
+			news.setAuthor((String) request.getSession().getAttribute(Constants.SESSION_STRING_USER_NAME));
 			newsdao.insertNews(news);
 
-			request.getRequestDispatcher("SortServlet?action=newsAdd").forward(request, response);
+			response.sendRedirect("SortServlet?action=newsAdd");
 
 		} else if ("deleteNews".equals(action)) {
 			log("deleteNews");
 			int newsid = Integer.parseInt(request.getParameter("newsid"));
-
 			newsdao.deleteNews(newsid);
-
-			request.getRequestDispatcher("NewsServlet?action=selectAll").forward(request, response);
-
+			response.sendRedirect("NewsServlet?action=selectAll");
 		} else if ("updateNews".equals(action)) {
 			log("updateNews");
 			int newsid = Integer.parseInt(request.getParameter("newsid"));
@@ -235,6 +248,7 @@ public class NewsServlet extends ServletBase {
 			news.setContent(content);
 			news.setNewsType(newsType);
 			news.setNewsClassId(newsClassId);
+			news.setImgs(request.getParameter("imgs"));
 
 			newsdao.updateNews(news);
 
@@ -251,7 +265,7 @@ public class NewsServlet extends ServletBase {
 			request.setAttribute("listSort", listSort);
 
 			int newsid = Integer.parseInt(request.getParameter("newsid"));
-			News news = null;// = new News();
+			BaseEntity news = null;// = new News();
 			news = newsdao.getNewsById(newsid);
 			request.setAttribute("news", news);
 			request.getRequestDispatcher("admin/newsMod.jsp").forward(request, response);

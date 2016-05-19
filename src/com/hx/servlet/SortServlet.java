@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hx.bean.Sort;
 import com.hx.dao.SortDao;
 
+@WebServlet("/SortServlet")
 public class SortServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -31,15 +33,16 @@ public class SortServlet extends HttpServlet {
 			int sortLevel = Integer.parseInt(request.getParameter("sortLevel"));
 			sort.setSortLevel(sortLevel);
 			sort.setSortName(sortName);
+			sort.setWeight(Integer.parseInt(request.getParameter("weight")));
 
 			sortdao.insertSort(sort);
 
-			request.getRequestDispatcher("SortServlet?action=selectAll").forward(request, response);
+			response.sendRedirect("SortServlet?action=selectAll");
 
 		} else if ("deleteSort".equals(action)) {
 			int sortid = Integer.parseInt(request.getParameter("sortid"));
 			sortdao.deleteSort(sortid);
-			request.getRequestDispatcher("SortServlet?action=selectAll").forward(request, response);
+			response.sendRedirect("SortServlet?action=selectAll");
 
 		} else if ("updateSort".equals(action)) {
 			Sort sort = new Sort();
@@ -50,10 +53,11 @@ public class SortServlet extends HttpServlet {
 			sort.setId(sortid);
 			sort.setSortLevel(sortLevel);
 			sort.setSortName(sortName);
+			sort.setWeight(Integer.parseInt(request.getParameter("weight")));
 
 			sortdao.updateSort(sort);
 
-			request.getRequestDispatcher("SortServlet?action=selectAll").forward(request, response);
+			response.sendRedirect("SortServlet?action=selectAll");
 		} else if ("selectAll".equals(action)) {
 			// Sort sort = null;
 

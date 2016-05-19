@@ -1,6 +1,11 @@
 package com.hx.bean;
 
-public class News {
+import java.util.List;
+
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+
+public class News extends BaseEntity {
 	private int id;
 	private int newsClassId;
 	private String title;
@@ -10,7 +15,38 @@ public class News {
 	private String files;
 	private int newsType;
 
-	private String createTime;
+	public List<String> getImgList() {
+		if (!Strings.isNullOrEmpty(imgs)) {
+			return Lists.newArrayList(imgs.split(","));
+		}
+		return Lists.newArrayList();
+	}
+	
+	public List<String> getImgUrlList() {
+		if (!Strings.isNullOrEmpty(imgs)) {
+			imgs=imgs.replace('\\', '/');
+			return Lists.newArrayList(imgs.split(","));
+		}
+		return Lists.newArrayList();
+	}
+
+	public String getImgs() {
+		return imgs;
+	}
+
+	public void setImgs(String imgs) {
+		this.imgs = imgs;
+	}
+
+	public String getFiles() {
+		return files;
+	}
+
+	public void setFiles(String files) {
+		this.files = files;
+	}
+
+	String createTime;
 
 	public int getId() {
 		return id;
@@ -66,6 +102,16 @@ public class News {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	@Override
+	public String getCreateSql() {
+		return "CREATE TABLE IF NOT EXISTS  `news` (" + "  `id` int(11) NOT NULL AUTO_INCREMENT,"
+				+ "  `newsClassId` int(11) NOT NULL," + "  `title` varchar(50) DEFAULT NULL," + "  `content` text,"
+				+ "  `imgs` text," + "  `author` varchar(20) DEFAULT NULL COMMENT 'admin',"
+				+ "  `newsType` int(1) NOT NULL DEFAULT '0'," + "  `createTime` varchar(50) DEFAULT NULL,"
+				+ "  PRIMARY KEY (`id`)," + "  UNIQUE KEY `id` (`id`)"
+				+ ") ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;";
 	}
 
 }

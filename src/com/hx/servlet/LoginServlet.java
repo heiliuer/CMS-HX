@@ -37,6 +37,7 @@ public class LoginServlet extends ServletBase {
 		UserDao userdao = new UserDao();
 		if (userdao.checkUser(name, pass)) {
 			request.getSession().setAttribute(Constants.SESSION_BOOL_LOGINED, true);
+			request.getSession().setAttribute(Constants.SESSION_STRING_USER_NAME, name);
 			response.sendRedirect("NewsServlet?action=selectAll");
 		} else {
 			toErrotPage("账户或者密码不正确", request, response);
