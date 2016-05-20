@@ -1,5 +1,8 @@
 package com.hx.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User extends BaseEntity {
 	private int id;
 	private String name;
@@ -49,15 +52,20 @@ public class User extends BaseEntity {
 
 	@Override
 	public String getCreateSql() {
-		return "CREATE TABLE IF NOT EXISTS `user` (" + 
-				"  `id` int(11) NOT NULL AUTO_INCREMENT," + 
-				"  `name` varchar(20) NOT NULL COMMENT '用户名'," + 
-				"  `pass` varchar(100) NOT NULL COMMENT '密码'," + 
-				"  `logTime` int(5) NOT NULL DEFAULT '0'," + 
-				"  `privileges` int(11) NOT NULL DEFAULT '0'," + 
-				"  PRIMARY KEY (`id`)," + 
-				"  UNIQUE KEY `id` (`id`)" + 
-				") ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;";
+		return "CREATE TABLE IF NOT EXISTS `user` (" + "  `id` int(11) NOT NULL AUTO_INCREMENT,"
+				+ "  `name` varchar(20) NOT NULL COMMENT '用户名'," + "  `pass` varchar(100) NOT NULL COMMENT '密码',"
+				+ "  `logTime` int(5) NOT NULL DEFAULT '0'," + "  `privileges` int(11) NOT NULL DEFAULT '0',"
+				+ "  PRIMARY KEY (`id`)," + "  UNIQUE KEY `id` (`id`)"
+				+ ") ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;";
 	}
 
+	@Override
+	public User setFromResultSet(ResultSet rs) throws SQLException {
+		this.setId(rs.getInt("id"));
+		this.setLogTime(rs.getInt("logTime"));
+		this.setName(rs.getString("name"));
+		this.setPass(rs.getString("pass"));
+		this.setPrivileges(rs.getInt("privileges"));
+		return this;
+	}
 }

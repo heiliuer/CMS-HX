@@ -26,13 +26,9 @@ import com.google.gson.Gson;
 import com.hx.utils.Status;
 
 @WebServlet("/file")
-public class FileServlet extends ServletBase {
+public class FileServlet extends BaseServlet {
 	private static final String FILES = "files";
 	private static final long serialVersionUID = 1L;
-
-	public FileServlet() {
-		super();
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

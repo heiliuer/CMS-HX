@@ -8,9 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.hx.dao.NewsDao;
+import com.hx.dao.SortDao;
+import com.hx.dao.UserDao;
 import com.hx.utils.Status;
 
-public abstract class ServletBase extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet {
+
+	public static class DAOS {
+		public static UserDao USERDAO = new UserDao();
+		public static SortDao SORTDAO = new SortDao();
+		public static NewsDao NEWSDAO = new NewsDao();
+	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,11 +61,6 @@ public abstract class ServletBase extends HttpServlet {
 		}
 		sBuilder.append('\n');
 		System.out.println(sBuilder.toString());
-	}
-
-	public static void main(String[] args) {
-		log("dd", 23);
-		log();
 	}
 
 }

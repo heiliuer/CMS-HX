@@ -7,12 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hx.dao.UserDao;
 import com.hx.utils.Constants;
 import com.hx.utils.StringUtils;
 
 @WebServlet("/login")
-public class LoginServlet extends ServletBase {
+public class LoginServlet extends BaseServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,8 +34,7 @@ public class LoginServlet extends ServletBase {
 			return;
 		}
 
-		UserDao userdao = new UserDao();
-		if (userdao.checkUser(name, pass)) {
+		if (DAOS.USERDAO.checkUser(name, pass)) {
 			request.getSession().setAttribute(Constants.SESSION_BOOL_LOGINED, true);
 			request.getSession().setAttribute(Constants.SESSION_STRING_USER_NAME, name);
 			response.sendRedirect("NewsServlet?action=selectAll");

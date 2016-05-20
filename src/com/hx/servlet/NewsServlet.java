@@ -23,7 +23,7 @@ import com.hx.utils.Constants;
 import com.hx.utils.StringUtils;
 
 @WebServlet("/NewsServlet")
-public class NewsServlet extends ServletBase {
+public class NewsServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,9 @@ public class NewsServlet extends ServletBase {
 			action = "selectNewsIndex";
 		}
 
-		NewsDao newsdao = new NewsDao();
+		NewsDao newsdao = DAOS.NEWSDAO;
+		SortDao sortdao = DAOS.SORTDAO;
+
 		if ("selectAll".equals(action)) {
 			log("selectAll");
 			// 所有新闻的集合
@@ -44,34 +46,29 @@ public class NewsServlet extends ServletBase {
 			request.setAttribute("listNews", listNews);
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = new ArrayList<Sort>();
 			listSort = sortdao.getAllSort();
 			request.setAttribute("listSort", listSort);
 
 			// 没有新闻分类id传过去，直接设置为-1；
 			request.setAttribute("newsClassId", -1);
-			// System.out.println(listSort);
 			toPage("admin/newsMgr.jsp", request, response);
 		} else if ("selectNewsBySortName".equals(action)) {
 			log("selectNewsBySortName");
 			int newsClassId = Integer.parseInt(request.getParameter("newsClassId"));
-			// System.out.println(newsClassId);
 			// 所有新闻的集合
 			ArrayList<News> listNews = new ArrayList<News>();
 			listNews = newsdao.getNewsBySortName(newsClassId);
 			request.setAttribute("listNews", listNews);
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
+
 			ArrayList<Sort> listSort = new ArrayList<Sort>();
 			listSort = sortdao.getAllSort();
 			request.setAttribute("listSort", listSort);
 
 			// 传递新闻分类id，改进前台用户体验
 			request.setAttribute("newsClassId", newsClassId);
-			// System.out.println(newsClassId);
-
 			request.getRequestDispatcher("admin/newsMgr.jsp").forward(request, response);
 		}
 		// 首页新闻显示页面
@@ -80,7 +77,6 @@ public class NewsServlet extends ServletBase {
 			// 所有新闻的集合
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
 
@@ -104,31 +100,24 @@ public class NewsServlet extends ServletBase {
 		else if ("selectNewsList".equals(action)) {
 			log("selectNewsList");
 			int newsClassId = Integer.parseInt(request.getParameter("newsClassId"));
-			// System.out.println(newsClassId);
 			// 所有新闻的集合
 			ArrayList<News> listNews = new ArrayList<News>();
 			listNews = newsdao.getNewsBySortName(newsClassId);
-			// listNews = newsdao.getNewsBySortName(7);
 			request.setAttribute("listNews", listNews);
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
 
 			// 所以子分类的集合
-			// SortDao sortdao= new SortDao();
 			// int newsClassId
 			ArrayList<Sort> listSubSort = new ArrayList<Sort>();
 			listSubSort = sortdao.getSubSortById(newsClassId);
 
 			request.setAttribute("listSubSort", listSubSort);
 
-			String thisSortName = sortdao.getSortById(newsClassId).get(0).getSortName();
+			String thisSortName = sortdao.getSortById(newsClassId).getSortName();
 			request.setAttribute("thisSortName", thisSortName);
-			// System.out.println(newsClassId);
-
-			// System.out.println(listNews);
 
 			request.getRequestDispatcher("list.jsp").forward(request, response);
 		}
@@ -141,68 +130,51 @@ public class NewsServlet extends ServletBase {
 				return;
 			}
 			int newsClassId = Integer.parseInt(newsClassIdStr);
-
 			String title = request.getParameter("title");
-			System.out.println(newsClassId);
-			System.out.println(title);
+
 			// 所有新闻的集合
 			ArrayList<News> listNews = new ArrayList<News>();
 			listNews = newsdao.getNewsBySearch(newsClassId, title);
-			// listNews = newsdao.getNewsBySortName(7);
 			request.setAttribute("listNews", listNews);
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = new ArrayList<Sort>();
 			listSort = sortdao.getAllSort();
 			request.setAttribute("listSort", listSort);
 
 			// 所以子分类的集合
-			// SortDao sortdao= new SortDao();
 			// int newsClassId
 			ArrayList<Sort> listSubSort = new ArrayList<Sort>();
 			listSubSort = sortdao.getSubSortById(newsClassId);
 
 			request.setAttribute("listSubSort", listSubSort);
 
-			String thisSortName = sortdao.getSortById(newsClassId).get(0).getSortName();
+			String thisSortName = sortdao.getSortById(newsClassId).getSortName();
 			request.setAttribute("thisSortName", thisSortName);
-			System.out.println(newsClassId);
-
-			System.out.println(listNews);
-
 			request.getRequestDispatcher("list.jsp").forward(request, response);
 		} else if ("selectNewsShow".equals(action)) {
 			log("selectNewsShow");
 			int newsClassId = Integer.parseInt(request.getParameter("newsClassId"));
 			request.setAttribute("newsClassId", newsClassId);
 			int newsid = Integer.parseInt(request.getParameter("newsid"));
-			// System.out.println(newsClassId);
 			// 获取指定id的新闻
-			/// ArrayList<News> listNews = new ArrayList<News>();
 			BaseEntity news = null;
 			news = newsdao.getNewsById(newsid);
-			// listNews = newsdao.getNewsBySortName(7);
 			request.setAttribute("news", news);
 
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = sortdao.getAllTopSort();
 			request.setAttribute("listSort", listSort);
 
 			// 所以子分类的集合
-			// SortDao sortdao= new SortDao();
 			// int newsClassId
 			ArrayList<Sort> listSubSort = new ArrayList<Sort>();
 			listSubSort = sortdao.getSubSortById(newsClassId);
 
 			request.setAttribute("listSubSort", listSubSort);
 
-			String thisSortName = sortdao.getSortById(newsClassId).get(0).getSortName();
+			String thisSortName = sortdao.getSortById(newsClassId).getSortName();
 			request.setAttribute("thisSortName", thisSortName);
-			System.out.println(newsClassId);
-			System.out.println(newsid);
-			System.out.println(news);
 
 			request.getRequestDispatcher("show.jsp").forward(request, response);
 		} else if ("insertNews".equals(action)) {
@@ -259,7 +231,6 @@ public class NewsServlet extends ServletBase {
 		else if ("updateNewsPage".equals(action)) {
 			log("updateNewsPage");
 			// 所以分类的集合
-			SortDao sortdao = new SortDao();
 			ArrayList<Sort> listSort = new ArrayList<Sort>();
 			listSort = sortdao.getAllSort();
 			request.setAttribute("listSort", listSort);

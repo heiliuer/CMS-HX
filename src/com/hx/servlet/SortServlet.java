@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hx.bean.Sort;
 import com.hx.dao.SortDao;
+import com.hx.servlet.BaseServlet.DAOS;
 
 @WebServlet("/SortServlet")
 public class SortServlet extends HttpServlet {
@@ -24,11 +25,10 @@ public class SortServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String action = request.getParameter("action");
 		System.out.println(action);
-		SortDao sortdao = new SortDao();
 
+		SortDao sortdao = DAOS.SORTDAO;
 		if ("insertSort".equals(action)) {
 			Sort sort = new Sort();
-
 			String sortName = request.getParameter("sortName");
 			int sortLevel = Integer.parseInt(request.getParameter("sortLevel"));
 			sort.setSortLevel(sortLevel);

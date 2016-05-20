@@ -9,57 +9,33 @@ import java.util.ArrayList;
 
 import com.hx.bean.User;
 
-public class UserDao {
-	private Connection conn;
-	private Statement s;
-	private ResultSet rs = null;
-	private PreparedStatement ps;
-	private DbConn dbconn = new DbConn();
+public class UserDao extends BaseDao {
 
-	private void setUser(User user) {
+	public ArrayList<User> query(String sql) {
+		Connection conn = getConnection();
+		ArrayList<User> al = new ArrayList<User>();
 		try {
-			user.setId(rs.getInt("id"));
-			user.setLogTime(rs.getInt("logTime"));
-			user.setName(rs.getString("name"));
-			user.setPass(rs.getString("pass"));
-			user.setPrivileges(rs.getInt("privileges"));
-
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
+			Statement s = getConnection().createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			conn.prepareStatement(sql);
+			while (rs.next()) {
+				al.add(new User().setFromResultSet(rs));
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
+		return al;
 	}
 
 	public ArrayList<User> getAllUser() {
-		conn = dbconn.getConn();
-		String sql = "select id, name, pass, logTime, privileges from user";
-		// String sql = "select * from user";
-		try {
-			s = conn.createStatement();
-			rs = s.executeQuery(sql);
-			ArrayList<User> listUser = new ArrayList<User>();
-
-			while (rs.next()) {
-				User user = new User();
-				setUser(user);
-				listUser.add(user);
-			}
-			return listUser;
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-
-		return null;
+		return query("select * from user");
 	}
 
 	public boolean insertUser(User user) {
-		conn = dbconn.getConn();
-
+		Connection conn = getConnection();
 		String sql = "insert into user ( id ,name, pass, privileges ,logTime) values (?, ?, ?, ?,?)";
 		try {
-			ps = conn.prepareStatement(sql);
-
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, user.getId());
 			ps.setString(2, user.getName());
 			ps.setString(3, user.getPass());
@@ -69,60 +45,50 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
-		} finally {
-			dbconn.freeConn(conn, ps, null);
 		}
 		return false;
 	}
 
 	public boolean updateUser(User user) {
-		conn = dbconn.getConn();
+		Connection conn = getConnection();
 		String sql = "update user set name = ?, pass= ?,logTime=?,privileges=? where id =? ";
 		try {
-			ps = conn.prepareStatement(sql);
-
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getPass());
 			ps.setInt(3, user.getLogTime());
 			ps.setInt(4, user.getPrivileges());
 			ps.setInt(5, user.getId());
-
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
-		} finally {
-			dbconn.freeConn(conn, ps, null);
 		}
 		return false;
 	}
 
 	public boolean deleteUser(int userid) {
-		conn = dbconn.getConn();
+		Connection conn = getConnection();
 		String sql = "delete from user where id = ? ";
 		try {
-			ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, userid);
 			if (ps.executeUpdate() > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			dbconn.freeConn(conn, ps, null);
 		}
 		return false;
 	}
 
 	public boolean checkUser(String name, String pass) {
-		conn = dbconn.getConn();
+		Connection conn = getConnection();
 		String sql = "select * from user where name = ? and pass = ?";
 		try {
-			ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			ps.setString(2, pass);
 			if (ps.executeQuery().first()) {
@@ -130,8 +96,6 @@ public class UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			dbconn.freeConn(conn, ps, null);
 		}
 		return false;
 	}

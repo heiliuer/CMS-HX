@@ -1,5 +1,7 @@
 package com.hx.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.google.common.base.Strings;
@@ -21,10 +23,10 @@ public class News extends BaseEntity {
 		}
 		return Lists.newArrayList();
 	}
-	
+
 	public List<String> getImgUrlList() {
 		if (!Strings.isNullOrEmpty(imgs)) {
-			imgs=imgs.replace('\\', '/');
+			imgs = imgs.replace('\\', '/');
 			return Lists.newArrayList(imgs.split(","));
 		}
 		return Lists.newArrayList();
@@ -112,6 +114,19 @@ public class News extends BaseEntity {
 				+ "  `newsType` int(1) NOT NULL DEFAULT '0'," + "  `createTime` varchar(50) DEFAULT NULL,"
 				+ "  PRIMARY KEY (`id`)," + "  UNIQUE KEY `id` (`id`)"
 				+ ") ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;";
+	}
+
+	@Override
+	public News setFromResultSet(ResultSet rs) throws SQLException {
+		this.setId(rs.getInt("id"));
+		this.setAuthor(rs.getString("author"));
+		this.setContent(rs.getString("content"));
+		this.setCreateTime(rs.getString("createTime"));
+		this.setNewsType(rs.getInt("newsType"));
+		this.setNewsClassId(rs.getInt("newsClassId"));
+		this.setTitle(rs.getString("title"));
+		this.setImgs(rs.getString("imgs"));
+		return this;
 	}
 
 }
