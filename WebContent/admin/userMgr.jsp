@@ -12,7 +12,6 @@
 <link href="./css/base.css" rel="stylesheet" type="text/css" />
 <link href="./css/menu.css" rel="stylesheet" type="text/css" />
 <link href="./css/applyEdit.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 
@@ -54,7 +53,7 @@
 			<tr>
 				<form method="post" action="UserServlet?action=insertUser">
 					<td><input name="name" required type="text" value="" /></td>
-					<td><input name="pass" required  type="text" value="" /></td>
+					<td><input name="pass" required type="text" value="" /></td>
 					<td><input name="logTime" type="text" value="" disabled /></td>
 					<td><input name="privileges" type="number" value="0" required /></td>
 					<td><input name="submit" type="submit" value="添加" /></td>

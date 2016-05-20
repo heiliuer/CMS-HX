@@ -5,7 +5,7 @@
 <%@page import="com.hx.bean.Sort"%>
 <%@page import="com.hx.bean.News"%>
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
@@ -117,8 +117,7 @@
 					<div data-previews>
 						<c:forEach items="${news.imgUrlList}" var="img">
 							<div data-img="${img }">
-								<img src="${img }"
-									class="preview"><span class="del">x</span>
+								<img src="${img }" class="preview"><span class="del">x</span>
 							</div>
 						</c:forEach>
 
