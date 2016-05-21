@@ -41,8 +41,7 @@
 									height="390" id="u_u35_pic" src="static/space.gif" border="0"></A>
 							</div>
 						</div>
-						<div
-							style="margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; top: -19px; width: 1150px; height: 19px; text-align: right; position: relative;">
+						<div style="margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; top: -23px; width: 1150px; height: 19px; text-align: right; right: 5px;position: relative;">
 							<c:forEach items="${newss }" var="news" varStatus="vst">
 								<c:if test="${vst.index<=5 }">
 									<A class="imagechangenews_pnode"
