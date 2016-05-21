@@ -34,7 +34,7 @@
 				<c:if test="${not empty newss}">
 					<div style="width: 1150px; height: 390px; overflow: hidden;">
 						<div align="center" id="u_u35_div"
-							style="margin: 0px; padding: 0px; border: 0px solid black; border-image: none; width: 1150px; height: 390px; background-color: rgb(0, 0, 0);">
+							style="margin: 0px; padding: 0px; border: 0px solid black; border-image: none; width: 1150px; height: 390px;">
 							<div id="u_u35_imgdiv"
 								style="padding: 0px; border: 0px currentColor; border-image: none;">
 								<A id="u_u35_url" target="_blank"><IMG width="1150"

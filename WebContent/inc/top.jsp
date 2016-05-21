@@ -3,10 +3,8 @@
 <%@page import="com.hx.bean.Sort"%>
 <link href="static/index.css" rel="stylesheet">
 <link href="static/body.css" rel="stylesheet">
-<link href="_sitegray/_sitegray_d.css" rel="stylesheet" type="text/css">
 <link href="static/index.vsb.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/static/xinwen.css">
-<link rel="stylesheet" type="text/css" href="/static/_sitegray_d.css" />
 <link rel="stylesheet" type="text/css" href="/static/xinwenwang.vsb.css" />
 <link href="static/imagechangenews.css" rel="stylesheet" type="text/css">
 <div id="top" class="top x_all">
