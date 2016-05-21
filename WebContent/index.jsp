@@ -134,7 +134,7 @@
 			<c:set value="${sortNews.sort }" var="sort" />
 			<div class="xinwen fr" title="${sort.sortName }">
 				<div class="xw-biaoti bt-bg">
-					<A class="fl"
+					<A class="fl" 
 						href="/NewsServlet?action=selectNewsList&newsClassId=${sort.id }"
 						target="_blank">${sort.sortName }</A> <font class="liulan fr"><A
 						style="font-size: 14px;"
@@ -149,7 +149,7 @@
 						<c:forEach items="${newss }" var="news" end="2" varStatus="vst">
 							<div class="tzlb">
 								<div class="lbwzk">
-									<a class="lb ${news.newsType>0?'hot':'' }"
+									<a class="lb ${news.newsType>0?'hot':'' }" target="_blank"
 										href="NewsServlet?action=selectNewsShow&newsClassId=${sort.id }&newsid=${news.id }">${news.title }</a>
 								</div>
 								<div class="lbsjk">${news.createTime }</div>

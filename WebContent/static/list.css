@@ -1,10 +1,11 @@
 #main{
-}
+width: 1150px;      margin: 0 auto;}
 #main #leftMenu{
 	width: 190px;
 	min-height: 4em;
 	/* background-color: #F1F1F1; */
 	float: left;
+	/* margin-top: 1em; */
 }
 #main #leftMenu .menuTitle{
 	
@@ -52,6 +53,7 @@ text-decoration: underline;
 	min-height: 500px;
 	float: left;
 	border-left: 1px solid #F1F1F1;
+	/* margin-top: 1em; */
 }
 #main #rightList #path{
 	height: 40px;
@@ -94,9 +96,10 @@ text-decoration: underline;
 	font-size: 13px;
 }
 #main .wrap {
-	width: 1150px;
-	margin: 0 auto;
+	float: left;
+	width: 100%;
 	background-color: rgba(218, 218, 218, 0.13);
+	margin-top: 1em;
 }
 
 #listBox #info {

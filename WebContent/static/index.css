@@ -4,7 +4,10 @@
 	position: relative;
 }
 .banner-xin {
-	margin: 0px auto; width: 1150px; height: 390px;
+	margin: 0px auto;
+	width: 1150px;
+	height: 390px;
+	margin-top: 1em;
 }
 .flexslider {
 	left: 50%; width: 1920px; height: 420px; overflow: hidden; margin-left: -960px; position: relative;
@@ -121,6 +124,7 @@
 	height: 402px;
 	background-color: rgb(244, 242, 238);
 	padding: 5px;
+	border-radius: 4px;
 }
 .xinwen .xw-biaoti {
 	width: 100%;
